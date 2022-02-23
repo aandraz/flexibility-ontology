@@ -1,41 +1,52 @@
 # Flexibility forecast expressed as timeSeries
-# TODO create specific timeseries, similarly as FlexibilityTimeseries. We could use BaselineForecastTimeseries
-?forecast rdf:type forecast:pointForecast .
+# TODO create specific timeseries, similarly as FlexibilityTimeseries. 
+?fc rdf:type ic-fc:PointForecast .
+
+# usage - flexibility forecast .... IS THIS OK?
+?fc ic-data:hasUsage ic-data:flexibility . 
+
+# Asset identifier
+?fc ic-tplg:hasTopologicalAssociation ?asset .
+
+# Adding the asset as topological location (optional)
+?asset rdf:subClassOf ic-tplg:TopologicalLocation .
 
 # Created time
 # Example: 2021-08-30T15:00:00Z 
-?forecast forecast:hasCreationTime ?ct .
+?fc ic-data:hasCreationTime ?ct .
 ?ct rdf:type time:Instant . 
 ?ct time:inXSDDateTimeStamp ?ctv .
 
-?forecast forecast:isExpressedAs ?ts 
-# Array of data points representing interval of active power, e.g for hourly interval in the day - 24 points
-?ts forecast:hasSeriesOfDataPoint ?dp .
-?ts rdf:type forecast:timeSeries .
+?fc forecast:isExpressedAs ?ts
+# Array of data points representing interval of forecasted flex., e.g for hourly interval in the day - 24 points
+?ts rdf:type ic-data:TimeSeries .
 
-# Time interval for the entire timeseries (all points)
-# Example: 2021-08-30T00:00:00Z - 2021-08-31T00:00:00Z
-?ts timeSeries:hasTime ?fti .
-?fti time:hasBeginning ?ftis .
-?ftis time:inXSDDateTimeStamp ?ftisv .
-?fti time:hasEnd ?ftie .
-?ftie time:inXSDDateTimeStamp ?ftiev .
-
-# Update of entire timeseries
-# Example:  1H - we receive 24 points (timeseries) every 1 H
-?ts timeSeries:hasUpdateRate ?update .
+# Resolution of each point in timeseries
+# Example:  1H
+?ts ic-data:hasUpdateRate ?update .
 ?update time:days ?up_d .
 ?update time:hours ?up_h .
 ?update time:minutes ?up_m .
 ?update time:seconds ?up_s .
 
-# Resolution of each point in timeseries
-# Example:  1H
-?ts timeSeries:hasTemporalResolution ?res .
+# Update of entire timeseries
+# Example:  1H - we receive 24 points (timeseries) every 1 H
+?ts ic-data:hasTemporalResolution ?res .
 ?res time:days ?res_d .
 ?res time:hours ?res_h .
 ?res time:minutes ?res_m .
 ?res time:seconds ?res_s .
+
+# Time interval for the entire timeseries (all points)
+# Example: 2021-08-30T00:00:00Z - 2021-08-31T00:00:00Z
+?ts ic-data:hasEffectivePeriod ?tsp .
+?tsp time:hasBeginning ?tsps .
+?tsps time:inXSDDateTimeStamp ?tspsv .
+?tsp time:hasEnd ?tspe .
+?tspe time:inXSDDateTimeStamp ?tspev .
+
+
+### HEHE IS A BIG Q FOR ME
 
 # Time interval of the data point
 # Example: 2021-08-30T00:00:00Z - 2021-08-30T01:00:00Z
@@ -65,3 +76,5 @@
 ?qb om:hasValue ?qbv .
 ?qbv om:hasUnit ic-units:kiloWatt .
 ?qbv om:hasNumericalValue ?qbnv .
+
+# Additionally we would need price(EUR/kWh) for each max and min point
