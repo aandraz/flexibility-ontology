@@ -27,15 +27,6 @@
 ?ti time:hasEnd ?tie .
 ?tie time:inXSDDateTimeStamp ?tiev .
 
-// Update rate
-// Example:  2s
-?dp ic-data:hasUpdateRate ?update .
-?update rdf:type time:DurationDescription .
-?update time:days ?res_d .
-?update time:hours ?res_h . 
-?update time:minutes ?res_m  . 
-?update time:seconds ?res_s . 
-
 // Value of the active power in the interval in kW
 // Example: 1000 kW
 ?dp ic-data:containsQuantity ?qap  .
