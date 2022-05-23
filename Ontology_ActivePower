@@ -1,37 +1,43 @@
-// ActivePower expresed as data point
-?dp rdf:type ic-data:dataPoint .
+// ActivePower expressed as a data point
+?dp rdf:type ic-data:DataPoint .
 
 // Asset identifier
-?dp ic-tplg:hasTopologicalAssociation ?asset .
+?asset rdf:type saref:Device .
 
 // Adding the asset as topological location (optional)
-?asset rdf:subClassOf ic-tplg:TopologicalLocation .
+?dp ic-tplg:hasToplogicalAssociation ?loc .
+?loc rdf:type ic-tplg:TopologicalLocation .
+?loc ic-tplg:isToplogicalAssociationOf ?asset .
 
-// Created time
+// Creation time
 // Example: 2021-08-30T15:00:00Z 
-?dp ic-data:hasCreationTime ?t
-?t time:inXSDDateTimeStamp ?ctv .
+?dp ic-data:hasCreationTime ?ct .
+?ct rdf:type time:Instant .
+?ct time:inXSDDateTimeStamp ?ctv .
 
 // Time interval of the data point
 // Example: 2021-08-30T15:00:00Z - 2021-08-30T15:02:00Z
-?dp ic-data:hasTimeStamp ?ti
+?dp ic-data:hasEffectivePeriod ?ti .
+?ti rdf:type time:Interval .
 ?ti time:hasBeginning ?tis .
 ?tis time:inXSDDateTimeStamp ?tisv .
 ?ti time:hasEnd ?tie .
 ?tie time:inXSDDateTimeStamp ?tiev .
 
-// Update of entire timeseries
+// Update rate
 // Example:  2s
 ?dp ic-data:hasUpdateRate ?update .
+?update rdf:type time:DurationDescription .
 ?update time:days ?res_d .
-?update time:hours ?res_h .
-?update time:minutes ?res_m .
-?update time:seconds ?res_s .
+?update time:hours ?res_h . 
+?update time:minutes ?res_m  . 
+?update time:seconds ?res_s . 
 
 // Value of the active power in the interval in kW
 // Example: 1000 kW
-?dp ic-data:hasQuantity ?qap .
-?qap rdf:type ic-units:ActivePower .
+?dp ic-data:containsQuantity ?qap  .
+?qap  rdf:type ic-uom:ActivePower .
+ic-uom:ActivePower rdf:type om:Quantity .
 ?qap om:hasValue ?qapv .
-?qapv om:hasUnit ic-units:kiloWatt .
+?qapv om:hasUnit om:kiloWatt .
 ?qapv om:hasNumericalValue ?qapnv .
