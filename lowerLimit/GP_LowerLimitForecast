@@ -1,0 +1,59 @@
+# lowerLimit forecast expressed as timeSeries
+?offer rdf:type ic-flex:FlexOffer . 
+?offer ic-data:hasCreationTime ?ct .
+
+?ts rdf:type ic-data:TimeSeries .
+
+# Definition of effective period
+?ep rdf:type time:Interval .
+?ep time:hasBeginning ?beg .
+?beg time:inXSDDataTimeStamp ?begts .
+?ep time:hasEnd ?end . 
+?end  time:inXSDDataTimeStamp ?endts .
+
+# Definition of creation time 
+?ct rdf:type time:Instant .
+?ct time:inXSDDataTimeStamp ?ctts .  
+
+# Definition of update rate
+?ur rdf:type time:DurationDescription .
+?ur time:days ?res_d .
+?ur time:hours ?res_h . 
+?ur time:minutes ?res_m  . 
+?ur time:seconds ?res_s . 
+
+# Definition of temporal resolution
+?tr rdf:type time:DurationDescription .
+?tr time:days ?res_d .
+?tr time:hours ?res_h . 
+?tr time:minutes ?res_m  . 
+?tr time:seconds ?res_s . 
+
+# Definition of topological location of an asset
+?tplg_loc rdf:type ic-tplg:TopologicalLocation .
+?tplg_loc ic-tplg:isToplogicalAssociationOf ?asset .
+?asset rdf:type saref:Device .
+?asset ic-tplg:hasTopologicalAssociation ?tplg_loc.
+
+
+# Definition of the timeseries included in the flex offer  
+?ts ic-data:hasTemporalResolution ?tr . 
+?ts ic-data:hasUpdateRate ?ur .
+?ts ic-data:producedBy ?organization .
+?ts ic-tplg:hasToplogicalAssociation ?tplg_loc .
+?ts ic-data:hasUsage ic-data:lowerLimit .
+?ts ic-data:hasDatapoint ?dp .
+
+# Definition of datapoints for active power values in the timeseries 
+?dp ic-data:hasEffectivePeriod ?ep .
+?dp ic-data:hasUpdateRate ?ur .
+?dp ic-tplg:hasToplogicalAssociation ?tplg_loc .
+# TODO is this hasUsage neede here again? It was defined above already same for the produced by. Do we need it here again=
+?dp ic-data:hasUsage ?use . 
+?dp ic-data:producedBy ?organization .
+?dp ic-data:containsQuantity ?qap  .
+?qap  rdf:type ic-uom:ActivePower .
+ic-uom:ActivePower rdf:type om:Quantity .
+?qap om:hasValue ?qapv .
+?qapv om:hasUnit om:kiloWatt .
+?qapv om:hasNumericalValue ?qapnv .
