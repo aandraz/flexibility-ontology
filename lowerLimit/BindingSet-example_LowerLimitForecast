@@ -1,33 +1,25 @@
 [
     {
-        "upper_limit": "<http://api.3e.com/83c8539d-8a45-4a45-87d7-38392c4a5ad6/1>",
+        "offer": "<http://api.3e.com/83c8539d-8a45-4a45-87d7-38392c4a5ad6/1>",
         "asset": "<http://api.3e.com/devices/e964ddc5-f6bf-44eb-82df-56b6a7e535b9>",
         "begts": "\"2021-08-30T00:00:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
         "endts": "\"2021-08-31T00:00:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
         "ctts" : "\"2021-08-29T15:00:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
         "res_m": "\"15\"^^<http://www.w3.org/2001/XMLSchema#double>",
-        "res_h": "\"1\"^^<http://www.w3.org/2001/XMLSchema#double>",
+        "res_m1": "\"1\"^^<http://www.w3.org/2001/XMLSchema#double>",
         "organization": "\"Cybergrid\"^^< http://www.w3.org/2001/XMLSchema#string>",
-        "dpbegts":  "\"2021-08-31T00:00:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
-        "dpendts":  "\"2021-08-31T00:15:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
-        "dbur" : "\"1\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
         "qapnv": "\"1000.5\"^^<http://www.w3.org/2001/XMLSchema#double>"
-
     },
     {
-        "upper_limit": "<http://api.3e.com/83c8539d-8a45-4a45-87d7-38392c4a5ad6/2>",
+        "offer": "<http://api.3e.com/83c8539d-8a45-4a45-87d7-38392c4a5ad6/2>",
         "asset": "<http://api.3e.com/devices/e964ddc5-f6bf-44eb-82df-56b6a7e535b9>",
-        "begts": "\"2021-08-30T00:00:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
-        "endts": "\"2021-08-31T00:00:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
+        "begts": "\"2021-08-30T00:15:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
+        "endts": "\"2021-08-31T00:30:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
         "ctts" : "\"2021-08-29T15:00:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
         "res_m": "\"15\"^^<http://www.w3.org/2001/XMLSchema#double>",
-        "res_h": "\"1\"^^<http://www.w3.org/2001/XMLSchema#double>",
+        "res_m1": "\"1\"^^<http://www.w3.org/2001/XMLSchema#double>",
         "organization": "\"Cybergrid\"^^< http://www.w3.org/2001/XMLSchema#string>",
-        "dpbegts":  "\"2021-08-31T00:15:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
-        "dpendts":  "\"2021-08-31T00:30:00Z\"^^<http://www.w3.org/2001/XMLSchema#dateTimeStamp>",
-        "dbur" : "\"1\"^^<http://www.w3.org/2001/XMLSchema#decimal>",
-        "qapnv": "\"1100.0\"^^<http://www.w3.org/2001/XMLSchema#double>"
-
+        "qapnv": "\"1000.5\"^^<http://www.w3.org/2001/XMLSchema#double>"
     }
     //... other 94 data points
 ]
