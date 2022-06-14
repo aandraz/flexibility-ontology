@@ -11,10 +11,8 @@ ex:beg1 time:inXSDDateTimeStamp  "2021-08-30T00:00:00Z"^^ xsd:dateTime.
 ex:EffectivePeriod1 time:hasEnd ex:end1 .
 ex:end1  time:inXSDDataTimeStamp "2021-08-31T00:00:00Z"^^xsd:dateTime .
 
-
 ex:CreationTime1  rdf:type time:Instant .
 ex:CreationTime1 time:inXSDDataTimeStamp "2021-08-29T15:00:00Z"^^ xsd:dateTime.  
-
 
 ex:lower_limit1 ic-data:hasUpdateRate ex:ur .
 ex:ur1 rdf:type time:DurationDescription.
