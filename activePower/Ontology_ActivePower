@@ -37,7 +37,6 @@
 // Example: 1000 kW
 ?dp ic-data:containsQuantity ?qap  .
 ?qap  rdf:type ic-uom:ActivePower .
-// ic-uom:ActivePower rdf:type om:Quantity . NO NEED THIS BE HERE
 ?qap om:hasValue ?qapv .
 ?qapv om:hasUnit om:kiloWatt .
 ?qapv om:hasNumericalValue ?qapnv .
