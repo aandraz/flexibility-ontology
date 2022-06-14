@@ -1,0 +1,16 @@
+{
+    "type": "baseline",
+    "units": "kW",
+	"interval": "PT15M",
+	"assetID": "e754f6c3-1d44-460e-be28-23d2aa03642c",
+    "measurements": [
+        {
+			"timestamp": "2021-04-29T12:00:00Z",
+			"value": "22.8"
+		},
+		{
+			"timestamp": "2021-04-29T12:00:00Z",
+			"value": "20.8"
+		}
+    ]
+}

@@ -16,7 +16,7 @@
 ?ct time:inXSDDateTimeStamp ?ctv .
 
 // Time interval of the data point
-// Example: 2021-08-30T15:00:00Z - 2021-08-30T15:02:00Z
+// Example: 2021-08-30T15:00:00Z - 2021-08-30T15:00:02Z (this can be same as the start interval)
 ?dp ic-data:hasEffectivePeriod ?ti .
 ?ti rdf:type time:Interval .
 ?ti time:hasBeginning ?tis .
@@ -37,7 +37,7 @@
 // Example: 1000 kW
 ?dp ic-data:containsQuantity ?qap  .
 ?qap  rdf:type ic-uom:ActivePower .
-ic-uom:ActivePower rdf:type om:Quantity .
+// ic-uom:ActivePower rdf:type om:Quantity . NO NEED THIS BE HERE
 ?qap om:hasValue ?qapv .
 ?qapv om:hasUnit om:kiloWatt .
 ?qapv om:hasNumericalValue ?qapnv .

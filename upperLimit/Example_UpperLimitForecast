@@ -1,0 +1,116 @@
+# Example intances for the Ontology_FlexibilityForecast service offered by Cybergrid
+# It can be used by anyone interested in modelling flexibility as a flex offer
+
+# Definition of an asset as a device with a topological location
+ex:asset rdf:type saref:Device .
+ex:asset ic-tplg:hasTopologicalAssociation ex:tplg_loc. 
+ex:tplg_loc rdf:type ic-tplg:TopologicalLocation .
+
+# We define the flexibility as a flex offer (wrapper for the different timeseries) 
+ex:offer1 rdf:type ic-flex:FlexOffer . 
+ex:offer1 ic-data:hasEffectivePeriod ex:ep .
+ex:offer1 ic-data:hasCreationTime ex:ct .
+ex:offer1 ic-flex:includes ex:upper_limit . # what is this?
+ex:upper_limit rdf:type ic-data:TimeSeries . # missing in the GP
+ 
+# Definition of effective period for the flex offer
+ex:ep rdf:type time:Interval .
+ex:ep time:hasBeginning ex:beg .
+ex:beg time:inXSDDataTimeStamp  "2021-08-30T00:00:00Z"^^< http://www.w3.org/2001/XMLSchema#dateTime> .
+ex:ep time:hasEnd ex:end . 
+ex:end  time:inXSDDataTimeStamp "2021-08-31T00:00:00Z"^^< http://www.w3.org/2001/XMLSchema#dateTime> .
+
+# Definition of creation time for the flex offer
+ex:ct rdf:type time:Instant .
+ex:ct time:inXSDDataTimeStamp "2021-08-29T15:00:00Z"^^< http://www.w3.org/2001/XMLSchema#dateTime> .  
+
+#First timeseries included in the flex offer to define the upperLimit
+#Note that temporal resolution, update rate, producer and topological location of this timeseries are the same of the flex offer  
+ex:upper_limit ic-data:hasTemporalResolution ex:tr . 
+ex:tr rdf:type time:DurationDescription .
+ex:tr time:minutes "15"^^< http://www.w3.org/2001/XMLSchema#decimal> . 
+ex:upper_limit ic-data:hasUpdateRate ex:ur1 .
+ex:ur1 rdf:type time:DurationDescription .
+ex:ur1 time:hours "1"^^< http://www.w3.org/2001/XMLSchema#decimal> . 
+ex:upper_limit ic-data:producedBy "Cybergrid"^^< http://www.w3.org/2001/XMLSchema#string> .
+ex:upper_limit ic-tplg:hasToplogicalAssociation ex:tplg_loc .
+ex:tplg_loc rdf:type ic-tplg:TopologicalLocation .
+ex:tplg_loc ic-tplg:isToplogicalAssociationOf ex:asset .
+ex:upper_limit ic-data:hasUsage ic-data:upperLimit . 
+
+ex:upper_limit ic-data:hasDatapoint ex:dpbs1 .
+ex:dpbs1 rdf:type ic-data:DataPoint .
+ex:upper_limit ic-data:hasDatapoint ex:dpbs2 .
+ex:dpbs2 rdf:type ic-data:DataPoint .
+
+# other datapoints up to 96 for the 15min intervals within one day
+ex:upper_limit ic-data:hasDatapoint ex:dpbs96 .
+ex:dpbs96 rdf:type ic-data:DataPoint .
+
+#Definition of the various datapoints of the upperLimit timeseries 
+ex:dpbs1 ic-data:hasEffectivePeriod ex:dpbs1ep .
+ex:dpbs1ep time:hasBeginning ex:beg1 .
+ex:beg1 time:inXSDDataTimeStamp  "2021-08-30T00:00:00Z"^^< http://www.w3.org/2001/XMLSchema#dateTime> .
+ex:dpbs1ep time:hasEnd ex:dpbs1end . 
+ex:dpbs1end  time:inXSDDataTimeStamp "2021-08-30T00:15:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+ex:dpbs1 ic-data:hasUpdateRate ex:ur1 .
+ex:ur1 rdf:type time:DurationDescription .
+ex:ur1 time:hours "1"^^< http://www.w3.org/2001/XMLSchema#decimal> . 
+ex:dpbs1 ic-tplg:hasToplogicalAssociation ex:tplg_loc .
+ex:tplg_loc ic-tplg:isToplogicalAssociationOf ex:asset .
+ex:dpbs1 ic-data:hasUsage ic-data:upperLimit . 
+ex:dpbs1 ic-data:producedBy "Cybergrid"^^< http://www.w3.org/2001/XMLSchema#string> .
+ex:dpbs1 ic-data:containsQuantity ex:dpbs1q  .
+ex:dpbs1q  rdf:type ic-uom:ActivePower .
+ic-uom:ActivePower rdf:type om:Quantity .
+ex:dpbs1q om:hasValue ex:dpbs1qv .
+ex:dpbs1qv om:hasUnit om:kiloWatt .
+ex:dpbs1qv om:hasNumericalValue "2000.00"^^<http://www.w3.org/2001/XMLSchema#double> .
+
+ex:dpbs2  ic-data:hasEffectivePeriod ex:dpbs2ep .
+ex:dpbs2ep time:hasBeginning ex:dpbs2beg .
+ex:dpbs2beg time:inXSDDataTimeStamp  "2021-08-30T00:15:00Z"^^< http://www.w3.org/2001/XMLSchema#dateTime> .
+ex:dpbs2ep time:hasEnd ex:dpbs2end . 
+ex:dpbs2end  time:inXSDDataTimeStamp "2021-08-30T00:30:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+ex:dpbs2 ic-data:hasUpdateRate ex:ur1 .
+ex:ur1 rdf:type time:DurationDescription .
+ex:ur1 time:hours "1"^^< http://www.w3.org/2001/XMLSchema#decimal> . 
+ex:dpbs2 ic-tplg:hasToplogicalAssociation ex:tplg_loc .
+ex:tplg_loc ic-tplg:isToplogicalAssociationOf ex:asset .
+ex:dpbs2 ic-data:hasUsage ic-data:upperLimit . 
+ex:dpbs2 ic-data:producedBy "Cybergrid"^^< http://www.w3.org/2001/XMLSchema#string> .
+ex:dpbs2 ic-data:containsQuantity ex:dpbs2q  .
+ex:dpbs2q  rdf:type ic-uom:ActivePower .
+ic-uom:ActivePower rdf:type om:Quantity .
+ex:dpbs2q om:hasValue ex:dpbs2qv .
+ex:dpbs2qv om:hasUnit om:kiloWatt .
+ex:dpbs2qv om:hasNumericalValue "2500.00"^^<http://www.w3.org/2001/XMLSchema#double> .
+
+# other datapoints up to 96 for the 15min intervals within one day
+
+ex:dpbs96  ic-data:hasEffectivePeriod ex:dpbs96ep .
+ex:dpbs96ep time:hasBeginning ex:dpbs96beg .
+ex:dpbs96beg time:inXSDDataTimeStamp  "2021-08-30T00:23:45Z"^^< http://www.w3.org/2001/XMLSchema#dateTime> .
+ex:dpbs2ep time:hasEnd ex:end1  . 
+ex:end1 time:inXSDDataTimeStamp "2021-08-31T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+ex:dpbs96 ic-data:hasUpdateRate ex:ur1 .
+ex:ur1 rdf:type time:DurationDescription .
+ex:ur1 time:hours "1"^^< http://www.w3.org/2001/XMLSchema#decimal> . 
+ex:dpbs96 ic-tplg:hasToplogicalAssociation ex:tplg_loc .
+ex:tplg_loc ic-tplg:isToplogicalAssociationOf ex:asset .
+ex:dpbs96 ic-data:hasUsage ic-data:upperLimit . 
+ex:dpbs96 ic-data:producedBy "Cybergrid"^^< http://www.w3.org/2001/XMLSchema#string> .
+ex:dpbs96 ic-data:containsQuantity ex:dpbs96q  .
+ex:dpbs96q  rdf:type ic-uom:ActivePower .
+ic-uom:ActivePower rdf:type om:Quantity .
+ex:dpbs96q om:hasValue ex:dpbs96qv .
+ex:dpbs96qv om:hasUnit om:kiloWatt .
+ex:dpbs96qv om:hasNumericalValue "2200.00"^^<http://www.w3.org/2001/XMLSchema#double> .
+
+
+
+
+
+
+
+
