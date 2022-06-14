@@ -1,13 +1,14 @@
 # lowerLimit forecast expressed as timeSeries
 ?offer rdf:type ic-flex:FlexOffer . 
 ?offer ic-data:hasCreationTime ?ct .
-
+?offer ic-flex:includes ?ts .
 ?ts rdf:type ic-data:TimeSeries .
 
 # Definition of effective period
-?ep rdf:type time:Interval .
-?ep time:hasBeginning ?beg .
-?beg time:inXSDDataTimeStamp ?begts .
+?offer ic-data:hasEffectivePeriod ?ep. 
+?ep rdf:type time:Interval . 
+?ep time:hasBeginning ?beg . 
+?beg time:inXSDDataTimeStamp ?begts . 
 ?ep time:hasEnd ?end . 
 ?end  time:inXSDDataTimeStamp ?endts .
 
@@ -16,20 +17,25 @@
 ?ct time:inXSDDataTimeStamp ?ctts .  
 
 # Definition of update rate
+?ts ic-data:hasUpdateRate ?ur
 ?ur rdf:type time:DurationDescription .
-?ur time:days ?res_d .
-?ur time:hours ?res_h . 
-?ur time:minutes ?res_m  . 
-?ur time:seconds ?res_s . 
+?ur time:hours ?res_h .
+?ur time:days ?res_d
+?ur time:minutes ?res_m  
+?ur time:seconds ?res_s .
+
 
 # Definition of temporal resolution
+?ts ic-data:hasTemporalResolution ?tr
 ?tr rdf:type time:DurationDescription .
-?tr time:days ?res_d .
-?tr time:hours ?res_h . 
-?tr time:minutes ?res_m  . 
-?tr time:seconds ?res_s . 
+?tr time:hours ?res_h1 .
+?tr time:days ?res_d1
+?tr time:minutes ?res_m1  
+?tr time:seconds ?res_s1 .
+
 
 # Definition of topological location of an asset
+?ts ic-tplg:hasToplogicalAssociation ?tplg_loc .
 ?tplg_loc rdf:type ic-tplg:TopologicalLocation .
 ?tplg_loc ic-tplg:isToplogicalAssociationOf ?asset .
 ?asset rdf:type saref:Device .
@@ -37,10 +43,7 @@
 
 
 # Definition of the timeseries included in the flex offer  
-?ts ic-data:hasTemporalResolution ?tr . 
-?ts ic-data:hasUpdateRate ?ur .
 ?ts ic-data:producedBy ?organization .
-?ts ic-tplg:hasToplogicalAssociation ?tplg_loc .
 ?ts ic-data:hasUsage ic-data:lowerLimit .
 ?ts ic-data:hasDatapoint ?dp .
 
@@ -48,12 +51,10 @@
 ?dp ic-data:hasEffectivePeriod ?ep .
 ?dp ic-data:hasUpdateRate ?ur .
 ?dp ic-tplg:hasToplogicalAssociation ?tplg_loc .
-# TODO is this hasUsage neede here again? It was defined above already same for the produced by. Do we need it here again=
-?dp ic-data:hasUsage ?use . 
+?dp ic-data:hasUsage ?use .
 ?dp ic-data:producedBy ?organization .
 ?dp ic-data:containsQuantity ?qap  .
 ?qap  rdf:type ic-uom:ActivePower .
-ic-uom:ActivePower rdf:type om:Quantity .
 ?qap om:hasValue ?qapv .
 ?qapv om:hasUnit om:kiloWatt .
 ?qapv om:hasNumericalValue ?qapnv .
