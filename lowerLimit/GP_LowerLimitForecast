@@ -20,8 +20,8 @@
 ?ts ic-data:hasUpdateRate ?ur .
 ?ur rdf:type time:DurationDescription .
 ?ur time:hours ?res_h .
-?ur time:days ?res_d
-?ur time:minutes ?res_m  
+?ur time:days ?res_d .
+?ur time:minutes ?res_m  .
 ?ur time:seconds ?res_s .
 
 # Definition of temporal resolution
