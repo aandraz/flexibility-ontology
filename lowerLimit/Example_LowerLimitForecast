@@ -50,6 +50,8 @@ ex:dpll1qv om:hasUnit om:kiloWatt .
 ex:dpll1qv om:hasNumericalValue "1600.00"^^xsd:double .
 
 
+##### TO REMOVE
+
 
 # Example intances for the Ontology_FlexibilityForecast service offered by Cybergrid
 # It can be used by anyone interested in modelling flexibility as a flex offer

@@ -28,10 +28,10 @@
 
 # Definition of temporal resolution
 ?tr rdf:type time:DurationDescription .
-?tr time:days ?res_d .
-?tr time:hours ?res_h . 
-?tr time:minutes ?res_m  . 
-?tr time:seconds ?res_s . 
+?tr time:days ?tres_d .
+?tr time:hours ?tres_h . 
+?tr time:minutes ?tres_m  . 
+?tr time:seconds ?tres_s . 
 
 # Definition of topological location of an asset
 ?tplg_loc rdf:type ic-tplg:TopologicalLocation .
