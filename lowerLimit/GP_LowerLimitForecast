@@ -17,7 +17,7 @@
 ?ct time:inXSDDataTimeStamp ?ctts .  
 
 # Definition of update rate
-?ts ic-data:hasUpdateRate ?ur
+?ts ic-data:hasUpdateRate ?ur .
 ?ur rdf:type time:DurationDescription .
 ?ur time:hours ?res_h .
 ?ur time:days ?res_d
@@ -25,7 +25,7 @@
 ?ur time:seconds ?res_s .
 
 # Definition of temporal resolution
-?ts ic-data:hasTemporalResolution ?tr
+?ts ic-data:hasTemporalResolution ?tr .
 ?tr rdf:type time:DurationDescription .
 ?tr time:days ?tres_d .
 ?tr time:hours ?tres_h . 
