@@ -9,14 +9,14 @@
 ?loc rdf:type ic-tplg:TopologicalLocation .
 ?loc ic-tplg:isToplogicalAssociationOf ?asset .
 
-// usage - setpoint
-?dp ic-data:hasUsage ic-data:setPoint .
-
 // Creation time
 // Example: 2021-08-30T15:00:00Z 
 ?dp ic-data:hasCreationTime ?ct .
 ?ct rdf:type time:Instant .
 ?ct time:inXSDDateTimeStamp ?ctv .
+
+// usage - setpoint
+?dp ic-data:hasUsage ic-data:setPoint .
 
 // Time interval of the data point
 // Example: 2021-08-30T15:00:00Z - 2021-08-30T15:02:00Z
