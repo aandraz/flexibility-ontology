@@ -1,0 +1,53 @@
+?offer <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ontology.tno.nl/interconnect/flexibility#FlexOffer> . 
+?offer <http://ontology.tno.nl/interconnect/datapoint#hasEffectivePeriod> ?ep .
+?offer <http://ontology.tno.nl/interconnect/datapoint#hasCreationTime> ?ct .
+
+?offer <http://ontology.tno.nl/interconnect/flexibility#includes> ?ts .
+?offer <http://ontology.tno.nl/interconnect/flexibility#includes> ?dp .
+
+?ep <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/time#Interval> .
+?ep <http://www.w3.org/2006/time#hasBeginning> ?beg .
+?beg <http://www.w3.org/2006/time#inXSDDataTimeStamp> ?begts .
+?ep <http://www.w3.org/2006/time#hasEnd> ?end . 
+?end  <http://www.w3.org/2006/time#inXSDDataTimeStamp> ?endts .
+
+?ct <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/time#Instant> .
+?ct <http://www.w3.org/2006/time#inXSDDataTimeStamp> ?ctts .  
+
+?ur <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/time#DurationDescription> .
+?ur <http://www.w3.org/2006/time#days> ?res_d .
+?ur <http://www.w3.org/2006/time#hours> ?res_h . 
+?ur <http://www.w3.org/2006/time#minutes> ?res_m  . 
+?ur <http://www.w3.org/2006/time#seconds> ?res_s . 
+
+?tr <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/time#DurationDescription> .
+?tr <http://www.w3.org/2006/time#days> ?tres_d .
+?tr <http://www.w3.org/2006/time#hours> ?tres_h . 
+?tr <http://www.w3.org/2006/time#minutes> ?tres_m  . 
+?tr <http://www.w3.org/2006/time#seconds> ?tres_s . 
+
+?tplg_loc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ontology.tno.nl/interconnect/topology#TopologicalLocation> .
+?tplg_loc <http://ontology.tno.nl/interconnect/topology#isToplogicalAssociationOf> ?asset .
+?asset <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://saref.etsi.org/saref4bldg/v1.1.2/saref4bldg.ttl#Device> .
+?asset <http://ontology.tno.nl/interconnect/topology#hasTopologicalAssociation> ?tplg_loc.
+
+?use <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ontology.tno.nl/interconnect/datapoint#Usage> .
+
+?ts <http://ontology.tno.nl/interconnect/datapoint#hasTemporalResolution> ?tr . 
+?ts <http://ontology.tno.nl/interconnect/datapoint#hasUpdateRate> ?ur .
+?ts <http://ontology.tno.nl/interconnect/datapoint#producedBy> ?organization .
+?ts <http://ontology.tno.nl/interconnect/topology#hasToplogicalAssociation> ?tplg_loc .
+?ts <http://ontology.tno.nl/interconnect/datapoint#hasUsage> ?use . 
+?ts <http://ontology.tno.nl/interconnect/datapoint#hasDatapoint> ?dp .
+
+?dp <http://ontology.tno.nl/interconnect/datapoint#hasEffectivePeriod> ?ep .
+?dp <http://ontology.tno.nl/interconnect/datapoint#hasUpdateRate> ?ur .
+?dp <http://ontology.tno.nl/interconnect/topology#hasToplogicalAssociation> ?tplg_loc .
+?dp <http://ontology.tno.nl/interconnect/datapoint#hasUsage> ?use . 
+?dp <http://ontology.tno.nl/interconnect/datapoint#producedBy> ?organization .
+?dp <http://ontology.tno.nl/interconnect/datapoint#containsQuantity> ?qap  .
+?qap  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ontology.tno.nl/interconnect/units#ActivePower> .
+<http://ontology.tno.nl/interconnect/units#ActivePower> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ontology-of-units-of-measure.org/resource/om-2#Quantity> .
+?qap <http://www.ontology-of-units-of-measure.org/resource/om-2#hasValue> ?qapv .
+?qapv <http://www.ontology-of-units-of-measure.org/resource/om-2#hasUnit> <http://www.ontology-of-units-of-measure.org/resource/om-2#kiloWatt> .
+?qapv <http://www.ontology-of-units-of-measure.org/resource/om-2#hasNumericalValue> ?qapnv .
