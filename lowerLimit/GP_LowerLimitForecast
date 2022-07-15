@@ -27,10 +27,10 @@
 # Definition of temporal resolution
 ?ts ic-data:hasTemporalResolution ?tr
 ?tr rdf:type time:DurationDescription .
-?tr time:hours ?res_h1 .
-?tr time:days ?res_d1
-?tr time:minutes ?res_m1  
-?tr time:seconds ?res_s1 .
+?tr time:days ?tres_d .
+?tr time:hours ?tres_h . 
+?tr time:minutes ?tres_m  . 
+?tr time:seconds ?tres_s . 
 
 # Definition of topological location of an asset
 ?ts ic-tplg:hasToplogicalAssociation ?tplg_loc .
@@ -39,7 +39,7 @@
 ?asset rdf:type saref:Device .
 ?asset ic-tplg:hasTopologicalAssociation ?tplg_loc.
 
-# Definition of the timeseries included in the flex offer  
+# Definition of the timeseries included in the flex offer
 ?ts ic-data:producedBy ?organization .
 ?ts ic-data:hasUsage ic-data:lowerLimit .
 ?ts ic-data:hasDatapoint ?dp .
@@ -48,8 +48,6 @@
 ?dp ic-data:hasEffectivePeriod ?ep .
 ?dp ic-data:hasUpdateRate ?ur .
 ?dp ic-tplg:hasToplogicalAssociation ?tplg_loc .
-# not neeed actually
-?dp ic-data:hasUsage ?use .
 ?dp ic-data:producedBy ?organization .
 ?dp ic-data:containsQuantity ?qap  .
 ?qap  rdf:type ic-uom:ActivePower .
